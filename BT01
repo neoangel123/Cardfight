@@ -1,0 +1,569 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package cardfight;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ *
+ * @author ORION
+ */
+public class BT01 {
+    
+    public static List<Cards> Set1 = new ArrayList<Cards>();
+    
+    public BT01()       
+    {
+        //Card Name, Set Number, Grade, Clan, Race, Skill, Power, Grade, Nation, Trigger, Filepath
+               
+        //Card Start
+        Cards Alfred =      
+        new Cards("King of Knights Alfred", "BT01/001", 3, "Royal Paladin", "Human", "[CONT](VC):Your units cannot boost this unit. " +
+                  " [CONT](VC): During your turn, this unit gets [Power]+2000 for each of your «Royal Paladin» rear-guards. " +
+                  " [ACT](VC/RC):[Counter Blast (3)] Search your deck for up to one grade 2 or less «Royal Paladin», call it to (RC), and shuffle your deck. ", 
+                  10000, 0, "United Sanctuary", "None", "/cardfight/newpackage/BT01/King_of_the_Knights_Alfred.jpg");
+        
+        Set1.add(Alfred);
+        //Card ENd
+        
+        Cards Blaster_Blade =      
+        new Cards("Blaster Blade", "BT01/002", 2, "Royal Paladin", "Human", " [AUTO]:[Counter Blast (2)] When this unit is placed on (VC), you may pay the cost. If you do, choose an opponent's rear-guard, and retire it. " +
+                  "[AUTO]:[Counter Blast (2)] When this unit is placed on (RC), if you have a «Royal Paladin» vanguard, you may pay the cost. If you do, choose an opponent's grade 2 or greater rear-guard, and retire it ", 
+                   9000, 5000, "United Sanctuary", "None", "/cardfight/newpackage/BT01/Blaster_Blade_RRR.jpg");
+        
+        Set1.add(Blaster_Blade);
+        
+        Cards Barcgal =      
+        new Cards("Barcgal", "BT01/003", 0, "Royal Paladin", "High  Beast", " [AUTO]: When another «Royal Paladin» rides this unit, you may call this card to (RC). " +
+              "[AUTO](RC):[Rest this unit] Search your deck for up to one card named 'Future Knight, Llew' or 'Flogal', call it to (RC), and shuffle your deck.", 
+                   4000, 10000, "United Sanctuary", "None", "/cardfight/newpackage/BT01/Barkgal.jpg");
+        
+        Set1.add(Barcgal);
+
+        Cards Dragonic_Overlord =      
+                new Cards("Dragonic Overlord", "BT01/004", 3, "Kagero", "Flame Dragon", "[CONT](VC/RC):If you do not have another «Kagero» vanguard or rear-guard, this unit gets [Power]-2000. " +
+                          "[ACT](VC/RC):[Counter Blast (3)] Until end of turn, this unit gets [Power]+5000, gets '[AUTO](VC/RC):When this unit's attack hits an opponent's rear-guard, [Stand] this unit', and loses 'Twin Drive!!'.", 
+                           11000, 0, "Dragon Empire", "None", "/cardfight/newpackage/BT01/Dragonic_Overlord_RRR.jpg");
+
+        Set1.add(Dragonic_Overlord);
+        
+        Cards Embodiment_of_Victory_Aleph =      
+                new Cards("Embodiment of Victory, Aleph", "BT01/005", 3, "Kagero", "Demon", " [ACT](VC/RC): [Counter-Blast 4] This unit gets [Power] +3000 [Critical] + 1 until the end of the turn. " +
+                          "[ACT](VC): [Choose a card named 'Dragon Knight, Aleph', a card named 'Embodiment of Armor, Bahr', and a card named 'Embodiment of Spear, Tahr' from your soul, and put them into your drop zone]. Turn all cards in your damage zone face up. ", 
+                           11000, 0, "Dragon Empire", "None", "/cardfight/newpackage/BT01/Embodiment_of_Victory_Aleph.jpg");
+
+        Set1.add(Embodiment_of_Victory_Aleph);
+        
+        Cards CEO_Amaterasu =      
+                new Cards("CEO Amaterasu", "BT01/006", 3, "Oracle Think Tank", "Noble", " [CONT](VC):During your turn, if the number of cards in your hand is four or greater, this unit gets [Power] +4000. " +
+                         "[AUTO](VC):At the beginning of your main phase, Soul Charge (1), look at the top card of your deck, and put that card on the top or the bottom of your deck. " +
+                         "[AUTO](VC/RC):[Soul Blast (8) & Counter Blast (5)] When this unit's attack hits, you may pay the cost. If you do, draw up to five cards.", 
+                           10000, 0, "United Sanctuary", "None", "/cardfight/newpackage/BT01/CEO_Amaterasu_RRR.jpg");
+
+        Set1.add(CEO_Amaterasu);
+        
+        Cards Battle_Sister_Cocoa =      
+                new Cards("Battle Sister, Cocoa", "BT01/007", 1, "Oracle Think Tank", "Elf", "[AUTO]: When this unit is placed on (VC) or (RC), if you have a «Oracle Think Tank» vanguard, look at the top card of your deck, and put that card on the top or the bottom of your deck.", 
+                           6000, 5000, "United Sanctuary", "None", "/cardfight/newpackage/BT01/Battle_Sister_Cocoa.jpg");
+
+        Set1.add(Battle_Sister_Cocoa);
+        
+        
+        
+        //Breaks-------------------------------------------------------
+        Cards Asura_Kaiser =      
+                new Cards("Asura Kaiser", "BT01/008", 3, "Nova Grappler", "Battleroid", "[CONT](VC/RC):If you do not have another «Nova Grappler» vanguard or rear-guard, this unit gets [Power] -2000. " +
+                          "[AUTO](VC):When this unit's drive check reveals a grade 3 «Nova Grappler», choose one of your rear-guards, and [Stand] it.", 
+                           11000, 0, "Star Gate", "None", "/cardfight/newpackage/BT01/Asura_Kaiser_SP.jpg");
+    
+        Set1.add(Asura_Kaiser);
+        
+        
+        
+        Cards Demon_Slaying_Knight_Lohengrin =      
+                new Cards("Demon Slaying Knight, Lohengrin", "BT01/009", 3, "Royal Paladin", "Human", "[AUTO](VC):At the beginning of your main phase, Soul Charge (1), and this unit gets [Power]+2000 until end of turn. " +
+                          "[AUTO](VC/RC):[Soul Blast (8) & Counter Blast (5)] When this unit's attack hits, you may pay the cost. If you do, retire all of your opponent's rear-guards.", 
+                           10000, 0, "United Sanctuary", "None", "/cardfight/newpackage/BT01/Demon_Slaying_Knight_Lohengrin.jpg");
+
+        Set1.add(Demon_Slaying_Knight_Lohengrin);        
+        
+        Cards Solitary_Knight_Gancelot =      
+                new Cards("Soltary Knight, Gancelot", "BT01/010", 3, "Royal Paladin", "Elf", "[ACT](VC):[Counter Blast (2)] If you have a card named 'Blaster Blade' in your soul, this unit gets [Power]+5000/[Critical]+1 until end of turn. " +
+                          "[ACT](Hand):[Reveal this card to your opponent, and put it on top of your deck] Search your deck for up to one card named 'Blaster Blade', reveal it to your opponent, put it into your hand, and shuffle your deck.", 
+                           9000, 0, "United Sanctuary", "None", "/cardfight/newpackage/BT01/Solitary_Knight_Gancelot.jpg");
+
+        Set1.add(Solitary_Knight_Gancelot);
+        
+        Cards Flash_Shield_Iseult =      
+                new Cards("Flash Shield, Iseult", "BT01/011", 1, "Royal Paladin", "Human", "[CONT]: Sentinel (You may only have up to four cards with 'Sentinel' in a deck) " +
+                          "[AUTO]:[Choose a «Royal Paladin» from your hand, and discard it] When this unit is placed on (GC), you may pay the cost. If you do, choose one of your «Royal Paladin», and that unit cannot be hit until end of that battle.", 
+                           6000, 0, "United Sanctuary", "None", "/cardfight/newpackage/BT01/Flash_Shield_Iseult.jpg");
+        
+        Set1.add(Flash_Shield_Iseult);
+        
+        Cards Future_Knight_Llew =      
+                new Cards("Future Knight, Llew", "BT01/012", 0, "Royal Paladin", "Human", "[ACT](RC):[Counter Blast (1) & Choose a unit named 'Future Knight, Llew', a unit named 'Barcgal', and a unit named 'Flogal' from your (RC), and put them into your soul] "
+                 +        "If you have a Grade 1 vanguard, search your deck for up to one card named 'Blaster Blade', ride it, and shuffle your deck.", 
+                           4000, 10000, "United Sanctuary", "Critical", "/cardfight/newpackage/BT01/Future_Knight_Llew.jpg");
+
+        Set1.add(Future_Knight_Llew);
+        
+        Cards Vortex_Dragon =
+                new Cards("Vortex Dragon", "BT01/013", 3, "Kagero", "Flame Dragon", "AUTO?V?: At the beginning of your main phase, [Soul Charge (1)], and this unit gets Power +2000 until the end of the turn. " +
+                          "ACT(VC/RC): [Soul Blast ( & Counter Blast (5)] Choose up to three of your opponent's rear-guards, and retire them.", 
+                           10000, 0, "Dragon Empire", "None", "/cardfight/newpackage/BT01/Vortex_Dragon.jpg");
+
+        Set1.add(Vortex_Dragon);
+        
+        Cards Dragon_Knight_Aleph =      
+                new Cards("Dragon Knight, Aleph", "BT01/014", 2, "Kagero", "Human", "[ACT](VC): [Counter-Blast 1 ] Choose a unit named 'Embodiment of Armor, Bahr' and a unit named 'Embodiment of Spear, Tahr' from your (RC), and put them into your soul] "
+                 +        "Search your deck for up to one card 'Embodiment of Victory, Aleph', ride it, and shuffle your deck.", 
+                           9000, 5000, "Dragon Empire", "None", "/cardfight/newpackage/BT01/Dragon_Knight_Aleph.jpg");
+
+        Set1.add(Dragon_Knight_Aleph);
+        
+        Cards Wyvern_Guard_Barri =      
+                new Cards("Wyvern Guard Barri", "BT01/015", 1, "kagero", "Dragonman", "[CONT]: Sentinel (You may only have up to four cards with 'Sentinel' in a deck.) " +
+                          "[Choose a «Kagero» from your hand, and discard it] When this unit is placed on (GC), you may pay the cost. If you do, choose one of your «Kagero», and that unit cannot be hit until end of that battle.", 
+                           6000, 0, "Dragon Empire", "None", "/cardfight/newpackage/BT01/Wyvern_Guard_Barri.jpg");
+
+        Set1.add(Wyvern_Guard_Barri);
+        
+        Cards Lizard_Soldier_Conroe =      
+                new Cards("Lizard Soldier, Conroe", "BT01/016", 0, "Kagero", "Dragonman", "[AUTO]:When another «Kagero» rides this unit, you may call this card to a (RC). " +
+                          "[ACT](RC):[Counter Blast (1) & Retire this unit] Search your deck for up to one grade 1 or less «Kagero», reveal it to your opponent, put it into your hand, and shuffle your deck.", 
+                           5000, 10000, "Dragon Empire", "None", "/cardfight/newpackage/BT01/Lizard_Soldier_Conroe.jpg");
+
+        Set1.add(Lizard_Soldier_Conroe);
+        
+        Cards Maiden_of_Libra  =      
+                new Cards("Maiden of Libra", "BT01/017", 2, "Oracle Think Tank", "Angel", "[AUTO](VC/RC):[Counter Blast (2)] When this unit's attack hits, if you have an «Oracle Think Tank»"
+                +         " vanguard, you may pay the cost. If you do, draw a card. ", 
+                           5000, 10000, "United Sanctuary", "None", "/cardfight/newpackage/BT01/Maiden_of_Libra.jpg");
+
+        Set1.add(Maiden_of_Libra);
+        
+        Cards Battle_Sister_Mocha  =      
+                new Cards("Battle Sister, Mocha", "BT01/018", 2, "Oracle Think Tank", "Human", "[AUTO](VC/RC):When this unit attacks, if the number of cards in your hand is four or greater, this unit gets [Power] +3000 until end of that battle.", 
+                           8000, 5000, "United Sanctuary", "None", "/cardfight/newpackage/BT01/Battle_Sister_Mocha.jpg");
+
+        Set1.add(Battle_Sister_Mocha);
+
+        Cards Battle_Sister_Chocolat  =      
+                new Cards("Battle Sister, Chocolat", "BT01/019", 1, "Oracle Think Tank", "Elf", "[CONT]: Sentinel (You can only have up to four cards with Sentinel in a deck)" +
+                "[AUTO]:[Choose a «Oracle Think Tank» from your hand, and discard it] When this unit is placed on (GC), you may pay the cost. If you do, choose one of your «Oracle Think Tank» that is being attacked, and that unit cannot be hit until end of that battle.", 
+                           6000, 0, "United Sanctuary", "None", "/cardfight/newpackage/BT01/Battle_Sister_Chocolat.jpg");
+
+        Set1.add(Battle_Sister_Chocolat);
+
+        Cards Juggernaut_Maximum  =      
+                new Cards("Juggernaut Maximum", "BT01/020", 3, "Spike Brothers", "Giantl", "[CONT](VC/RC): If you do not have another <Spike Brothers> Vanguard or rear-guard, this unit gets [Power] -2000." +
+               "[AUTO](RC): [Soul-Blast 1] When this unit attacks, you may pay the cost. If you do, this unit gets [Power] +5000 until end of that battle, and at the beginning of the close step of that battle, return this unit to your deck, and shuffle your deck.", 
+                           11000, 0, "Dark Zone", "None", "/cardfight/newpackage/BT01/Juggernaut_Maximum.jpg");
+
+        Set1.add(Juggernaut_Maximum);
+
+        Cards Knight_of_Silence_Gallatin  =      
+                new Cards("Knight of Silence, Gallatin", "BT01/021", 2, "Royal Paladin", "Human", "",
+                           10000, 5000, "United Sanctuary", "None", "/cardfight/newpackage/BT01/Knight_of_Silence_Gallatin.jpg");
+
+        Set1.add(Knight_of_Silence_Gallatin);
+
+        Cards Dragon_Knight_Nehalem  =      
+                new Cards("Dragon Knight, Nehalem", "BT01/022", 2, "Kagero", "Human", "",
+                           10000, 5000, "Dragon Empire", "None", "/cardfight/newpackage/BT01/Dragon_Knight_Nehalem.jpg");
+
+        Set1.add(Dragon_Knight_Nehalem);
+
+        Cards Wyvern_Strike_Tejas  =      
+                new Cards("Wyvern Strike, Tejas", "BT01/023", 2, "Kagero", "Winged Dragon","CONT(V/R): If this unit would attack, it may instead attack an opponent's unit in the back row of the same column as this unit.",
+                           8000, 5000, "Dragon Empire", "None", "/cardfight/newpackage/BT01/Wyvern_Strike_Tejas.jpg");
+
+        Set1.add(Wyvern_Strike_Tejas);
+
+        Cards Embodiment_of_Spear_Tahr  =      
+                new Cards("Embodiment of Spear, Tahr", "BT01/024", 0, "Kagero", "Demon", "", 
+                           5000, 10000, "Dragon Empire", "Critical", "/cardfight/newpackage/BT01/Embodiment_of_Spear_Tahr.jpg");
+
+        Set1.add(Embodiment_of_Spear_Tahr);
+
+        Cards Oracle_Guardian_Apollon  =      
+                new Cards("Oracle Guardian, Apollon", "BT01/025", 3, "Oracle Think Tank", "Battleroid","[AUTO](VC):[Counter Blast (2)] When this unit's attack hits, you may pay the cost. If you do, draw two cards, choose a card from your hand, return it to your deck, and shuffle your deck. " +
+                "[AUTO](RC): [Counter Blast (2)] When this unit's attack hits, you may pay the cost. If you do, draw a card.", 
+                           10000, 0, "United Sanctuary", "None", "/cardfight/newpackage/BT01/Oracle_Guardian_Apollon.jpg");
+
+        Set1.add(Oracle_Guardian_Apollon);
+
+        Cards Oracle_Guardian_Wiseman  =      
+                new Cards("Oracle Guardian, Wiseman", "BT01/026", 2, "Oracle Think Tank", "Battleroid", "",
+                           10000, 5000, "United Sanctuary", "None", "/cardfight/newpackage/BT01/Oracle_Guardian_Wiseman.jpg");
+
+        Set1.add(Oracle_Guardian_Wiseman);
+
+        Cards Lozenge_Magus  =      
+                new Cards("Lozenge Magus", "BT01/027", 0, "Oracle Think Tank", "Elf","(You may only have up to four cards with 'HEAL' in a deck.)" +
+                          "[AUTO]:When another «Oracle Think Tank» rides this unit, you may call this card to (RC)." +
+                           "[AUTO](RC):When this unit boosts, the boosted unit gets [Power]+3000 until end of that battle, and at the begininng of the end phase of that turn, return this unit to your deck, and shuffle your deck.", 
+                           3000, 10000, "United Sanctuary", "Heal", "/cardfight/newpackage/BT01/Lozenge_Magus_SP.jpg");
+
+        Set1.add(Lozenge_Magus);
+
+        Cards Mr_Invincible  =      
+                new Cards("Mr Invincible", "BT01/028", 3, "Nova Grappler", "Alien","[AUTO](VC):At the beginning of your main phase, Soul Charge (1), choose a card from your damage zone, and turn it face up." +
+                           "[AUTO](VC/RC):[Soul Blast (8) & Counter Blast (5)] When this unit's attack hits, you may pay the cost. If you do, [Stand] all of your units.", 
+                           10000, 0, "Star Gate", "None", "/cardfight/newpackage/BT01/Mr_Invincible.jpg");
+
+        Set1.add(Mr_Invincible);
+
+        Cards Brutal_Jack  =      
+                new Cards("Brutal Jack", "BT01/029", 2, "Nova Grappler", "Battleroid","[CONT](VC/RC):Restraint (This unit cannnot attack.) " +
+                          "[ACT](VC/RC):[Counter Blast (1)] Until end of turn, this unit loses 'Restraint'." +
+                          "[AUTO](VC):When this unit is boosted by a «Nova Grappler», this unit gets [Power]+5000 until end of that battle.",
+                           11000, 5000, "Star Gate", "None", "/cardfight/newpackage/BT01/Brutal_Jack.jpg");
+
+        Set1.add(Brutal_Jack);
+
+        Cards King_of_Sword  =      
+                new Cards("King of Sword", "BT01/030", 2, "Nova Grappler", "Battleroid", "",
+                           10000, 5000, "Star Gate", "None", "/cardfight/newpackage/BT01/King_of_Sword.jpg");
+
+        Set1.add(King_of_Sword);
+
+        Cards Queen_of_Heart  =      
+                new Cards("Queen of Heart", "BT01/031", 2, "Nova Grappler", "Battleroid", "",
+                           6000, 5000, "Star Gate", "None", "/cardfight/newpackage/BT01/Queen_of_Heart.jpg");
+
+        Set1.add(Queen_of_Heart);
+
+        Cards Battleraizer  =      
+                new Cards("Battleraizer", "BT01/032", 0, "Nova Grappler", "Battleroid","[AUTO]:When another «Nova Grappler» rides this unit, you may call this card to (RC)." +
+                          "[AUTO](RC):When this unit boosts, the boosted unit gets [Power]+3000 until end of that battle, and at the beginning of the end phase of that turn, return this unit to your deck, and shuffle your deck.", 
+                           3000, 10000, "Star Gate", "Stand", "/cardfight/newpackage/BT01/Battleraizer.jpg");
+
+        Set1.add(Battleraizer);
+
+        Cards Tyrant_Deathrex  =      
+                new Cards("Tyrant Deathrex", "BT01/033", 3, "Tachikaze", "Dinodragon","[AUTO](VC): When this unit attacks, this unit gets [Power] +5000 until end of that battle. " +
+                          "[AUTO](VC): When this unit's attack hits, choose one of your rear-guards, and retire it.", 
+                           10000, 0, "Dragon_Empire", "None", "/cardfight/newpackage/BT01/Tyrant_Deathrex.jpg");
+
+        Set1.add(Tyrant_Deathrex);
+        
+        Cards Assault_Dragon_Blightops =
+        new Cards("Assault Dragon, Blightops", "BT01/034", 2,"Tachikaze","Dino Dragon", "[AUTO]: [Counter Blast (1)] When this unit is put into the drop zone from (RC), you may pay the cost. If you do, search your deck for " + 
+                  "up to one card named 'Ironclad Dragon, Shieldon', reveal it to your opponent, put it into your hand, and shuffle your deck.",
+                    9000, 5000, "Dragon Empire", "None", "/cardfight/newpackage/BT01/Assault_Dragon_Blightops.jpg");
+       
+        Set1.add(Assault_Dragon_Blightops);
+
+        Cards Stealth_Dragon_Voidmaster=
+        new Cards("Stealth Dragon, Voidmaster ", "BT01/035", 3,"Nubatama","Shadow Dragon","[AUTO](VC):When this unit attacks, if the number of cards in your hand is greater than your opponent's, this unit gets [Power] +3000 until end of that battle. "+
+          "[AUTO](VC/RC):[Counter Blast (1)] When this unit's attack hits, if the number of cards in your hand is less than your opponent's, you may pay the cost. If you do, your opponent chooses a card from his or her hand, and discards it.",
+          9000, 0, "Dragon Empire", "None", "/cardfight/newpackage/BT01/Stealth_Dragon_Voidmaster.jpg");
+       
+        Set1.add(Stealth_Dragon_Voidmaster);
+
+        Cards Demon_Eater=
+        new Cards("Demon Eater", "BT01/036", 3,"Dark Irregulars","Elf","AUTO 【V】: At the beginning of your main phase, Soul Charge (1), and this unit gets Power +2000 until end of turn. "+
+          "AUTO 【V/R】: [Soul Blast (8) & Counter Blast (5)] When this unit's attack hits, you may pay the cost. If you do, retire all of your opponent's rear-guards.",
+          10000, 0, "Dark Zone", "None", "/cardfight/newpackage/BT01/Demon_Eater.jpg");
+       
+        Set1.add(Demon_Eater);
+
+        Cards Monster_Frank=
+        new Cards("Monster Frank", "BT01/037", 3,"Granblue","Workeroid","[ACT][Drop zone]: [Counter-Blast 3] If you have a Grade 2 Vanguard, ride this card.",
+          10000, 0, "Magallanica", "None", "/cardfight/newpackage/BT01/Monster_Frank.jpg");
+       
+        Set1.add(Monster_Frank);
+
+
+        Cards Commodore_Blueblood=
+        new Cards("Commodore Blueblood", "BT01/038", 2,"Granblue","Vampire", "",
+          10000, 5000, "Magallanica", "None", "/cardfight/newpackage/BT01/Commodore_Blueblood.jpg");
+       
+        Set1.add(Commodore_Blueblood);
+
+        Cards Hell_Spider=
+        new Cards("Hell Spider", "BT01/039", 3,"Megacolony","Insect","[CONT](VC):During your turn, if all of your opponent's vanguard and rear-guards are Rest, this unit gets [Power] +3000. "+
+          "[AUTO]:[Counter-Blast 2] When this unit is placed on (VC) or (RC), you may pay the cost. If you do, choose one of your opponent's rear-guards, and the chosen unit cannot [Stand] during your opponent's next stand phase.",
+          10000, 0, "Zoo", "None", "/cardfight/newpackage/BT01/Hell_Spider.jpg");
+       
+        Set1.add(Hell_Spider);
+
+        Cards Bloody_Hercules=
+            new Cards("Bloody Hercules", "BT01/040", 2,"Megacolony","Insect", "",
+          10000, 5000, "Zoo", "None", "/cardfight/newpackage/BT01/Bloody_Hercules.jpg");
+       
+        Set1.add(Bloody_Hercules);
+
+        Cards Covenant_Knight_Randolf=
+        new Cards("Covenant Knight,Randolf", "BT01/041", 2,"Royal Paladin","Human","[AUTO](VC/RC): When this unit attacks, if the number of cards in your hand is greater than your opponent's, this unit gets [Power] +3000 until end of that battle.",
+          8000, 5000, "United Sanctuary", "None", "/cardfight/newpackage/BT01/Convenat_Knight_Randolf.jpg");
+       
+        Set1.add(Covenant_Knight_Randolf);
+
+
+        Cards Little_Sage_Marron =
+        new Cards("Little Sage, Marron", "BT01/042", 1,"Royal Paladin","Giant","",
+          8000, 5000, "United Sanctuary", "None", "/cardfight/newpackage/BT01/Little_Sage_Marron.jpg");
+       
+        Set1.add(Little_Sage_Marron);
+
+        Cards Lake_Maiden_Lien =
+        new Cards("Lake Maiden,Lien", "BT01/043", 1,"Royal Paladin","Elf","[ACT](VC/RC):[Rest this unit & Choose a card from your hand, and discard it] Draw a card.",
+          7000, 5000, "United Sanctuary", "None", "/cardfight/newpackage/BT01/Lake_Maiden_Lien.jpg");
+       
+        Set1.add(Lake_Maiden_Lien);
+
+        Cards Wingal =
+        new Cards("Wingal", "BT01/044", 1,"Royal Paladin","High Beast","[AUTO](RC):When this unit boosts a card named 'Blaster Blade', the boosted unit gets [Power]+4000 until end of that battle.",
+          6000, 5000, "United Sanctuary", "None", "/cardfight/newpackage/BT01/Wingal.jpg");
+       
+        Set1.add(Wingal);
+
+        Cards Weapons_Dealer_Govannon =
+        new Cards("Weapons Dealer, Govannon", "BT01/045", 0,"Royal Paladin","Gnome", "",
+          5000, 5000, "United Sanctuary", "Draw", "/cardfight/newpackage/BT01/Weapons_Dealer_Govannon.jpg");
+       
+        Set1.add(Weapons_Dealer_Govannon);
+
+        Cards Flogal =
+        new Cards("Flogal", "BT01/046", 0,"Royal Paladin","High Beast", "",
+          5000, 10000, "United Sanctuary", "Stand", "/cardfight/newpackage/BT01/Flogal.jpg");
+       
+        Set1.add(Flogal);
+
+        Cards Yggdrasil_Maiden_Elaine =
+        new Cards("Yggdrasil Maiden, Elaine", "BT01/047", 0,"Royal Paladin","Elf", "(You may only have up to four cards with 'HEAL' in a deck.) ",
+          5000, 10000, "United Sanctuary", "Heal", "/cardfight/newpackage/BT01/Yggdrasil_Maiden_Elaine.jpg");
+       
+        Set1.add(Yggdrasil_Maiden_Elaine);
+
+
+        Cards Embodiment_of_Armor_Bahr =
+        new Cards("Embodiment of Armor, Bahr", "BT01/048", 1,"Kagero","Demon", "",
+          8000, 5000, "Dragon Empire", "None", "/cardfight/newpackage/BT01/Embidiment_of_Armor_Bahr.jpg");
+       
+        Set1.add(Embodiment_of_Armor_Bahr);
+        
+        Cards Dragon_Monk_Gojo =
+        new Cards("Dragon Monk, Gojo", "BT01/049", 1,"Kagero","Gillman","[ACT](VC/RC):[Rest this unit & Choose a card from your hand, and discard it] Draw a card.",
+          7000, 5000, "Dragon Empire", "None", "/cardfight/newpackage/BT01/Dragon_Monk_Gojo.jpg");
+       
+        Set1.add(Dragon_Monk_Gojo);
+
+        Cards Wyvern_Strike_Jarran =
+        new Cards("Wyvern_Strike_Jarran", "BT01/050", 1,"Kagero","Winged Dragon","[AUTO]【RC】: When this unit boosts a card named 'Wyvern Strike, Tejas', the boosted unit gets [Power] +4000 until end of that battle. ",
+          6000, 5000, "Dragon Empire", "None", "/cardfight/newpackage/BT01/Wyvern_Strike_Jarran.jpg");
+       
+        Set1.add(Wyvern_Strike_Jarran);
+
+        Cards Dragon_Dancer_Monica =
+        new Cards("Dragon Dancer, Monica", "BT01/051", 0,"Kagero","Human", "",
+          5000, 5000, "Dragon Empire", "Draw", "/cardfight/newpackage/BT01/Dragon_Dancer_Monica.jpg");
+       
+        Set1.add(Dragon_Dancer_Monica);
+
+        Cards Lizard_Soldier_Ganlu =
+        new Cards("Lizard Soldier,Ganlu", "BT01/052", 0,"Kagero","Dragonman", "",
+          5000, 10000, "Dragon Empire", "Stand", "/cardfight/newpackage/BT01/Lizard_Soldier_Ganlu.jpg");
+       
+        Set1.add(Lizard_Soldier_Ganlu);
+
+        Cards Dragon_Monk_Genjo =
+            new Cards("Dragon Monk, Genjo", "BT01/053", 0,"Kagero","Human","（You may only have up to four cards with 'HEAL' in a deck.） ",
+          5000, 10000, "Dragon Empire", "Heal", "/cardfight/newpackage/BT01/Dragon_Monk_Genjo.jpg");
+       
+        Set1.add(Dragon_Monk_Genjo);
+
+        Cards Oracle_Guardian_Gemini =
+        new Cards("Oracle Guardian, Gemini", "BT01/054", 1,"Oracle Think Tank","Battleroid"," ",
+          8000, 5000, "United Sanctuary", "None", "/cardfight/newpackage/BT01/Oracle_Guardian_Gemini.jpg");
+       
+        Set1.add(Oracle_Guardian_Gemini);
+
+        Cards Weather_Girl_Milk =
+        new Cards("Weather Girl, Milk", "BT01/055", 1,"Oracle Think Tank","Sylph","[AUTO](RC):When this unit boosts an «Oracle Think Tank» vanguard, if the number of cards in your hand is four or greater, the boosted unit gets [Power]+4000 until end of that battle. ",
+          6000, 5000, "United Sanctuary", "None", "/cardfight/newpackage/BT01/Weather_Girl_Milk.jpg");
+       
+        Set1.add(Weather_Girl_Milk);
+
+        Cards Oracle_Guardian_Nike =
+        new Cards("Oracle Guardian, Nike", "BT01/056", 0,"Oracle Think Tank","Battleroid", "",
+          5000, 10000, "United Sanctuary", "Critical", "/cardfight/newpackage/BT01/Oracle_Guardian_Nike.jpg");
+       
+        Set1.add(Oracle_Guardian_Nike);
+
+        Cards Dream_Eater =
+        new Cards("Dream Eater", "BT01/057", 0,"Oracle Think Tank","High Beast", "",
+          5000, 5000, "United Sanctuary", "Draw", "/cardfight/newpackage/BT01/Dream_Eater.jpg");
+       
+        Set1.add(Dream_Eater);
+
+        Cards Miracle_Kid =
+        new Cards("Miracle Kid", "BT01/058", 0,"Oracle Think Tank","High Beast", "",
+          5000, 5000, "United Sanctuary", "Draw", "/cardfight/newpackage/BT01/Miracle_Kid.jpg");
+       
+        Set1.add(Miracle_Kid);
+
+        Cards Hungry_Dumpty =
+        new Cards("Hungry Dumpty", "BT01/059", 2,"Nova Grappler","Alien","[AUTO]: When this unit is placed on (RC), if you have a <Nova Grappler> vanguard, choose a card from your damage zone, and turn it face up.",
+          9000, 5000, "Star Gate", "None", "/cardfight/newpackage/BT01/Hungry_Dumpty.jpg");
+       
+        Set1.add(Hungry_Dumpty);
+
+
+        Cards Tough_Boy =
+        new Cards("Tough Boy", "BT01/060", 1,"Nova Grappler","Battleroid", "",
+          8000, 5000, "Star Gate", "None", "/cardfight/newpackage/BT01/Tough_Boy.jpg");
+       
+        Set1.add(Tough_Boy);
+
+
+        Cards Screamin_and_Dancin_Announcer_Shout =
+        new Cards("Tough Boy", "BT01/061", 1,"Nova Grappler","Alien","[ACT](VC/RC):[Rest this unit & Choose a card from your hand, and discard it] Draw a card.",
+          7000, 5000, "Star Gate", "None", "/cardfight/newpackage/BT01/Screamin_and_Dancin_Announcer_Shout.jpg");
+       
+        Set1.add(Screamin_and_Dancin_Announcer_Shout);
+
+
+        Cards Clay_Doll_Mechanic =
+        new Cards("Clay-doll Mechanic", "BT01/062", 1,"Nova Grappler","Alien","[AUTO]: When this unit is placed on (RC), if you have a <Nova Grappler> vanguard, choose a card from your damage zone, and turn it face up.",
+          7000, 5000, "Star Gate", "None", "/cardfight/newpackage/BT01/Clay-doll_Mechanic.jpg");
+       
+        Set1.add(Clay_Doll_Mechanic);
+
+        Cards Shining_Lady =
+        new Cards("Shining Lady", "BT01/063", 0,"Nova Grappler","Battleroid", "",
+          5000, 10000, "Star Gate", "Critical", "/cardfight/newpackage/BT01/Shining_Lady.jpg");
+       
+        Set1.add(Shining_Lady);
+
+        Cards Lucky_Girl =
+        new Cards("Lucky Girl", "BT01/064", 0,"Nova Grappler","High Beast", "",
+          5000, 10000, "Star Gate", "Stand", "/cardfight/newpackage/BT01/Lucky_Girl.jpg");
+       
+        Set1.add(Lucky_Girl);
+        
+        Cards Ring_Girl_Clara  =      
+                new Cards("Ring Girl, Clara", "BT01/065", 0, "Nova Grappler", "Workeroid","", 
+                           5000, 10000, "Star Gate", "Heal", "/cardfight/newpackage/BT01/Ring_Girl_Clara.jpg");
+
+        Set1.add(Ring_Girl_Clara);
+
+        Cards Sonic_Noa  =      
+                new Cards("Sonic Noa", "BT01/066", 1, "Tachikaze", "Dinodragon", "", 
+                           8000, 5000, "Dragon Empire", "None", "/cardfight/newpackage/BT01/Sonic_Noa.jpg");
+
+        Set1.add(Sonic_Noa);
+
+        
+        
+        //Breaks-------------------------------------------------
+        Cards Ironclad_Dragon_Shieldon  =      
+                new Cards("Ironclad Dragon, Shieldon", "BT01/067", 0, "Tachikaze", "Dinodragon", "", 
+                           6000, 10000, "Dragon Empire", "None", "/cardfight/newpackage/BT01/Ironclad_Dragon_Shieldon.jpg");
+
+        Set1.add(Ironclad_Dragon_Shieldon);
+        
+        
+
+        Cards Stealth_Beast_Chigasumi  =      
+                new Cards("Stealth Beast, Chigasumi", "BT01/068", 2, "Nubatama", "Warbeast", "[AUTO](VC/RC):When this unit attacks, if the number of cards in your hand is greater than your opponent's, this unit gets [Power] +3000 until end of that battle.", 
+                           8000, 5000, "Dragon Empire", "None", "/cardfight/newpackage/BT01/Stealth_Beast_Chigasumi.jpg");
+
+        Set1.add(Stealth_Beast_Chigasumi);
+
+        Cards Stealth_Dragon_Dreadmaster  =      
+                new Cards("Stealth Dragon, Dreadmaster", "BT01/069", 1, "Nubatama", "Shadow Dragon", "[AUTO](RC):[Counter-Blast 1] When an attack hits during the battle that this unit boosted a <<Nubatama>>, if the number of cards in your hand is less than your opponent's, you may pay the cost. If you do, your opponent chooses a card from his or her hand, and discards it.", 
+                           7000, 5000, "Dragon Empire", "None", "/cardfight/newpackage/BT01/Stealth_Dragon_Dreadmaster.jpg");
+
+        Set1.add(Stealth_Dragon_Dreadmaster);
+
+         Cards Stealth_Beast_Hagakure  =      
+                new Cards("Stealth Beast, Hagakure", "BT01/070", 0, "Nubatama", "Warbeast", "[AUTO]:[Counter Blast (1)] When this unit is placed on (GC), if you have a «Nubatama» vanguard, and the number of cards in your hand is less than your opponent's, you may pay the cost. If you do, your opponent chooses a card from his or her hand, and discards it.", 
+                           5000, 10000, "Dragon Empire", "None", "/cardfight/newpackage/BT01/Stealth_Beast_Hagakure.jpg");
+
+        Set1.add(Stealth_Beast_Hagakure);
+
+        Cards Blue_Dust  =      
+                new Cards("Blue Dust", "BT01/071", 2, "Dark Irregulars", "Human", " [AUTO] (V/R): When this unit's attack hits, if you have a «Dark Irregulars» vanguard, you may Soul Charge (1).", 
+                           9000, 5000, "Dark Zone", "None", "/cardfight/newpackage/BT01/Blue_Dust.jpg");
+
+        Set1.add(Blue_Dust);
+
+        Cards Nightmare_Baby  =      
+                new Cards("Nightmare Baby", "BT01/072", 1, "Dark Irregulars", "Demon", "[AUTO](RC):When this unit boosts a unit named 'Blue Dust', the boosted unit gets [Power] +4000 until end of that battle.", 
+                           6000, 5000, "Dark Zone", "None", "/cardfight/newpackage/BT01/Nightmare_Baby.jpg");
+
+        Set1.add(Nightmare_Baby);
+
+        Cards Rock_the_Wall  =      
+                new Cards("Rock the Wall", "BT01/073", 3, "Dark Irregulars", "Ogre", "[AUTO]:When this unit is put into the drop zone from (GC), put this card into your soul.", 
+                           5000, 10000, "Dark Zone", "None", "/cardfight/newpackage/BT01/Rock_the_Wall.jpg");
+
+        Set1.add(Rock_the_Wall);
+
+        Cards Highspeed_Brakki  =      
+                new Cards("Highspeed, Brakki", "BT01/074", 2, "Spike Brothers", "Warbeast", "[AUTO](RC): [Soul-Blast 1] When this unit attacks, you may pay the cost. If you do, this unit gets [Power] +5000 until end of that battle, and at the beginning of the close step of that battle, return this unit to your deck, and shuffle your deck.", 
+                           9000, 5000, "Dark Zone", "None", "/cardfight/newpackage/BT01/Highspeed_Brakki.jpg");
+
+        Set1.add(Highspeed_Brakki);
+
+        Cards Wonder_Boy  =      
+                new Cards("Wonder Boy", "BT01/075", 1, "Spike Brothers", "Goblin", "", 
+                           8000, 5000, "Dark Zone", "None", "/cardfight/newpackage/BT01/Wonder_Boy.jpg");
+
+        Set1.add(Wonder_Boy);
+
+        Cards Redshoe_Milly  =      
+                new Cards("Redshoe, Milly", "BT01/076", 0, "Spike Brothers", "Succubus", "[AUTO]: When this unit is put into the drop zone from (GC), put this card into your soul.", 
+                           5000, 10000, "Dark Zone", "None", "/cardfight/newpackage/BT01/Redshoe_Milly.jpg");
+
+        Set1.add(Redshoe_Milly);
+
+        Cards  Dandy_Guy_Romario  =      
+                new Cards("Dandy Guy, Romario", "BT01/077", 1, "Granblue", "Zombie", "", 
+                           8000, 5000, "Magallianca", "None", "/cardfight/newpackage/BT01/Dandy_Guy_Romario.jpg");
+
+        Set1.add(Dandy_Guy_Romario);
+
+        Cards Guiding_Zombie  =      
+                new Cards("Guiding_Zombie", "BT01/078", 0, "Granblue", "Zombie", "[AUTO]: When another <<Granblue>> rides this unit, you may call this card to (RC)." + 
+  "[ACT](RC):[Put this unit into your soul] Put three cards from the top of your deck into your drop zone.", 
+                           5000, 10000, "Magallianca", "None", "/cardfight/newpackage/BT01/Guding_Zombie.jpg");
+
+        Set1.add(Guiding_Zombie);
+
+        Cards Karma_Queen  =      
+                new Cards("Karma Queen", "BT01/079", 1, "Megacolony", "Insect", "[AUTO]:[Counter Blast (2)] When this unit is placed on (VC) or (RC), you may pay the cost. If you do, choose one of your opponent's rear-guards, and the chosen unit cannot [Stand] during your opponent's next stand phase.", 
+                           7000, 5000, "Zoo", "None", "/cardfight/newpackage/BT01/Karma_Queen.jpg");
+
+        Set1.add(Karma_Queen);
+
+        Cards Madame_Mirage  =      
+                new Cards("Madame_Mirage", "BT01/080", 0, "Megacolony", "Insect", "", 
+                           6000, 10000, "Zoo", "None", "/cardfight/newpackage/BT01/Madame_Mirage.jpg");
+
+        Set1.add(Madame_Mirage);
+        
+        
+        
+       /* Cards Blaster_Dark =        
+        new Cards("Blaster Dark", "BT01/002", 2, "Shadow Paladin", "Human", "[CONT](VC):If you have a card named 'Blaster Javelin' in your soul, this unit gets [Power]+1000. " + 
+                  "[AUTO]:[Counter Blast (2)] When this unit is placed on (VC), you may pay the cost. If you do, choose one of your opponent's rear-guards, and retire it. ",
+                   9000, 5000, "United Sanctuary", "None", "");   
+               
+        Set1.add(Blaster_Dark);*/
+  
+    }
+    
+    public List<Cards> get_set()
+    {
+        return Set1;
+    }
+    
+}
