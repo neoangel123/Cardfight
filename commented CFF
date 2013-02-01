@@ -1,0 +1,953 @@
+package cardfight;
+
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.Graphics2D;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.text.Collator;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Locale;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+public class Cardfight extends JFrame
+  implements ActionListener
+{
+  private JLabel jLabel1;
+  private JFrame frame;
+  private JPanel panel = new JPanel();
+  private JPanel panel1 = new JPanel();
+  private JButton[] buttons = new JButton[2];
+  private JButton[] next_prev = new JButton[2];
+  private JButton[] sort = new JButton[1];
+  private JButton[] clear = new JButton[1];
+
+  private JTextField[] text = new JTextField[5];
+  private JLabel[] textfield_label = new JLabel[5];
+  private JCheckBox[] checkbox = new JCheckBox[5];
+  private JLabel[] checbox_label = new JLabel[5];
+
+  private JLabel[] count_triggers = new JLabel[5];
+  int heal = 0;
+  int stand = 0;
+  int critical = 0;
+  int draw = 0;
+  int trigger_amount = 0;
+  int sentinal = 0;
+
+  private JLabel[] HugeCard = new JLabel[1];
+
+  private int numclicks = 0;
+  private int menuOption = 0;
+  private BufferedImage[] saved = new BufferedImage[2];
+  private BufferedImage[] images = new BufferedImage[16];
+  private BufferedImage[] sortImage = new BufferedImage[1];
+  private BufferedImage[] clearImage = new BufferedImage[1];
+
+  private BufferedImage[] deckImage = new BufferedImage[50];
+  int cardNumber = 0;
+
+  private BufferedImage[] display = new BufferedImage[1];
+  private BufferedImage[] triggers = new BufferedImage[5];
+  private JLabel[] triggerlabel = new JLabel[5];
+
+  private JButton[] Images_16 = new JButton[16];
+  private JButton[] Images_50 = new JButton[50];
+
+  private Font count_font = new Font("Arial", 1, 14);
+  private Font f = new Font("Arial", 1, 12);
+  private Font f1 = new Font("Arial", 0, 10);
+
+  public static List<Cards> Sets = new ArrayList();
+  public static BT01 Set1;
+  int pageNumber = 1;
+  int pageNumbers = 0;
+
+  List<Cards> theCards = new ArrayList();
+  List<Cards> theCards16 = new ArrayList();
+  List<Cards> theDeck = new ArrayList();
+
+  int x_change = 690;
+  int y_change = 45;
+  private KeyboardListener Shift;
+
+  public void Cardfight()
+  {
+    initCards();
+    initComponents();
+  }
+
+  public void initCards()
+  {
+    Set1 = new BT01();
+    Sets.addAll(Set1.get_set());
+
+    final Collator collator = Collator.getInstance(Locale.US);
+
+    Collections.sort(Sets, new Comparator()//card comparer and sorter
+    {
+      public int compare(Cards c1, Cards c2)
+      {
+        return collator.compare(c1.Card_Name(), c2.Card_Name());
+      }
+    });
+  }
+
+  public void Panel1()//The main panel where we add all the components
+  {
+    try
+    {
+      this.HugeCard[0] = new JLabel();
+
+      this.sortImage[0] = ImageIO.read(getClass().getResource("/cardfight/newpackage/Sort.jpg"));
+
+      this.sort[0] = new JButton();
+      this.sort[0].setIcon(new ImageIcon(this.sortImage[0]));
+      this.sort[0].setPreferredSize(new Dimension(30, 75));
+
+      this.clearImage[0] = ImageIO.read(getClass().getResource("/cardfight/newpackage/Clear.jpg"));
+
+      this.clear[0] = new JButton();
+      this.clear[0].setIcon(new ImageIcon(this.clearImage[0]));
+      this.clear[0].setPreferredSize(new Dimension(30, 75));
+
+      this.triggers[0] = ImageIO.read(getClass().getResource("/cardfight/newpackage/Heal.png"));
+      this.triggers[1] = ImageIO.read(getClass().getResource("/cardfight/newpackage/Stand.png"));
+      this.triggers[2] = ImageIO.read(getClass().getResource("/cardfight/newpackage/Critical.png"));
+      this.triggers[3] = ImageIO.read(getClass().getResource("/cardfight/newpackage/Draw.png"));
+
+      for (int i = 0; i < 4; i++)
+      {
+        this.triggerlabel[i] = new JLabel();
+        this.triggerlabel[i].setIcon(new ImageIcon(this.triggers[i]));
+      }
+
+      this.saved[0] = ImageIO.read(getClass().getResource("/cardfight/newpackage/CardSearchBackground.jpg"));
+      this.display[0] = ImageIO.read(getClass().getResource("/cardfight/newpackage/cardBackground.jpg"));
+
+      this.HugeCard[0].setIcon(new ImageIcon(this.display[0]));
+      this.HugeCard[0].setPreferredSize(new Dimension(265, 375));
+
+      for (int i = 0; i < 16; i++)
+      {
+        this.images[i] = this.saved[0];
+        this.Images_16[i] = new JButton();
+        this.Images_16[i].setIcon(new ImageIcon(this.images[i]));
+        this.Images_16[i].setPreferredSize(new Dimension(68, 89));
+      }
+
+      for (int i = 0; i < 50; i++)
+      {
+        this.deckImage[i] = this.saved[0];
+        this.Images_50[i] = new JButton();
+        this.Images_50[i].setIcon(new ImageIcon(this.deckImage[i]));
+        this.Images_50[i].setPreferredSize(new Dimension(68, 89));
+      }
+    }
+    catch (Exception e)
+    {
+    }
+    this.textfield_label[0] = new JLabel("Card Name:");
+    this.textfield_label[1] = new JLabel("Card Skill:");
+    this.textfield_label[2] = new JLabel("Clan:");
+    this.textfield_label[3] = new JLabel("Race:");
+    this.textfield_label[4] = new JLabel("Grade:");
+
+    this.checbox_label[0] = new JLabel("Heal");
+    this.checbox_label[1] = new JLabel("Stand");
+    this.checbox_label[2] = new JLabel("Critical");
+    this.checbox_label[3] = new JLabel("Draw");
+    this.checbox_label[4] = new JLabel("Triggers");
+
+    this.count_triggers[0] = new JLabel("<  " + this.heal + "  >");
+    this.count_triggers[1] = new JLabel("<  " + this.stand + "  >");
+    this.count_triggers[2] = new JLabel("<  " + this.critical + "  >");
+    this.count_triggers[3] = new JLabel("<  " + this.draw + "  >");
+
+    for (int i = 0; i < 5; i++)
+    {
+      this.text[i] = new JTextField(1);
+      if (i < 2)
+      {
+        this.text[i].setPreferredSize(new Dimension(180, 30));
+      }
+      else
+      {
+        this.text[i].setPreferredSize(new Dimension(60, 30));
+      }
+      this.text[i].setFont(this.f);
+      this.textfield_label[i].setFont(this.f);
+      this.checbox_label[i].setFont(this.f);
+
+      this.checkbox[i] = new JCheckBox();
+      this.checkbox[i].setPreferredSize(new Dimension(30, 30));
+      this.checkbox[i].setSelected(true);
+    }
+
+    this.checkbox[4].setSelected(false);
+
+    this.panel1.setBounds(0, 0, 1205, 715);
+    this.panel1.setBackground(Color.CYAN);
+
+    this.buttons[0] = new JButton("Search");
+    this.buttons[0].setFont(this.f);
+    this.buttons[0].setPreferredSize(new Dimension(75, 30));
+
+    this.buttons[1] = new JButton("Clear");
+    this.buttons[1].setFont(this.f);
+    this.buttons[1].setPreferredSize(new Dimension(75, 30));
+
+    this.next_prev[0] = new JButton("<<<");
+    this.next_prev[0].setFont(this.f1);
+    this.next_prev[0].setPreferredSize(new Dimension(55, 30));
+    this.next_prev[0].setEnabled(false);
+
+    this.next_prev[1] = new JButton(">>>");
+    this.next_prev[1].setFont(this.f1);
+    this.next_prev[1].setPreferredSize(new Dimension(55, 30));
+    this.next_prev[1].setEnabled(false);
+
+    this.sort[0].setEnabled(false);
+    this.clear[0].setEnabled(false);
+
+    this.panel1.setLayout(null);
+    this.panel1.add(this.buttons[0]);
+    this.panel1.add(this.buttons[1]);
+    this.panel1.add(this.next_prev[0]);
+    this.panel1.add(this.next_prev[1]);
+
+    for (int i = 0; i < 4; i++)
+    {
+      this.count_triggers[i].setFont(this.count_font);
+      this.panel1.add(this.triggerlabel[i]);
+      this.panel1.add(this.count_triggers[i]);
+    }
+
+    for (int i = 0; i < 5; i++)
+    {
+      this.panel1.add(this.textfield_label[i]);
+      this.panel1.add(this.checbox_label[i]);
+      this.panel1.add(this.text[i]);
+      this.panel1.add(this.checkbox[i]);
+    }
+
+    for (int i = 0; i < 16; i++)
+    {
+      this.panel1.add(this.Images_16[i]);
+    }
+
+    for (int i = 0; i < 50; i++)
+    {
+      this.panel1.add(this.Images_50[i]);
+    }
+
+    this.panel1.add(this.HugeCard[0]);
+
+    this.panel1.add(this.sort[0]);
+    this.panel1.add(this.clear[0]);
+  }
+
+  private void initComponents()//ALl the buttons actionlistener and labels and other shenanigams
+  {
+    this.frame = new JFrame("Cardfight");
+    this.frame.setBounds(50, 10, 1220, 750);
+
+    this.frame.setDefaultCloseOperation(3);
+
+    Panel1();
+
+    this.frame.setLayout(null);
+
+    this.frame.add(this.panel1);
+
+    this.buttons[0].setBounds(180 + this.x_change, 600 + this.y_change, 75, 30);
+    this.buttons[0].addActionListener(this);
+
+    this.buttons[1].setBounds(386 + this.x_change, 600 + this.y_change, 75, 30);
+    this.buttons[1].addActionListener(this);
+
+    this.next_prev[0].setBounds(180 + this.x_change, 360 + this.y_change, 55, 30);
+    this.next_prev[0].addActionListener(this);
+
+    this.next_prev[1].setBounds(401 + this.x_change, 360 + this.y_change, 55, 30);
+    this.next_prev[1].addActionListener(this);
+
+    this.sort[0].setBounds(280, 35, 30, 75);
+    this.sort[0].addActionListener(this);
+
+    this.clear[0].setBounds(280, 125, 30, 75);
+    this.clear[0].addActionListener(this);
+
+    this.text[0].setBounds(215 + this.x_change, 440 + this.y_change, 180, 30);
+    this.text[1].setBounds(215 + this.x_change, 475 + this.y_change, 180, 30);
+    this.text[2].setBounds(215 + this.x_change, 510 + this.y_change, 60, 30);
+    this.text[3].setBounds(215 + this.x_change, 545 + this.y_change, 60, 30);
+    this.text[4].setBounds(335 + this.x_change, 510 + this.y_change, 60, 30);
+
+    this.textfield_label[0].setBounds(145 + this.x_change, 440 + this.y_change, 70, 30);
+    this.textfield_label[1].setBounds(153 + this.x_change, 475 + this.y_change, 70, 30);
+    this.textfield_label[2].setBounds(181 + this.x_change, 510 + this.y_change, 70, 30);
+    this.textfield_label[3].setBounds(179 + this.x_change, 545 + this.y_change, 70, 30);
+    this.textfield_label[4].setBounds(294 + this.x_change, 510 + this.y_change, 70, 30);
+
+    this.checkbox[0].setBounds(407 + this.x_change, 440 + this.y_change, 30, 30);
+    this.checkbox[1].setBounds(407 + this.x_change, 475 + this.y_change, 30, 30);
+    this.checkbox[2].setBounds(407 + this.x_change, 510 + this.y_change, 30, 30);
+    this.checkbox[3].setBounds(407 + this.x_change, 545 + this.y_change, 30, 30);
+    this.checkbox[4].setBounds(365 + this.x_change, 545 + this.y_change, 30, 30);
+
+    this.checbox_label[0].setBounds(447 + this.x_change, 440 + this.y_change, 70, 30);
+    this.checbox_label[1].setBounds(446 + this.x_change, 475 + this.y_change, 70, 30);
+    this.checbox_label[2].setBounds(442 + this.x_change, 510 + this.y_change, 70, 30);
+    this.checbox_label[3].setBounds(447 + this.x_change, 545 + this.y_change, 70, 30);
+    this.checbox_label[4].setBounds(311 + this.x_change, 545 + this.y_change, 70, 30);
+
+    int newy = 90;
+
+    this.triggerlabel[0].setBounds(113 + this.x_change, 32, 57, 57);
+    this.triggerlabel[1].setBounds(113 + this.x_change, 32 + newy, 57, 57);
+    this.triggerlabel[2].setBounds(113 + this.x_change, 32 + newy * 2, 57, 57);
+    this.triggerlabel[3].setBounds(113 + this.x_change, 32 + newy * 3, 57, 57);
+
+    this.count_triggers[0].setBounds(123 + this.x_change, 91, 60, 30);
+    this.count_triggers[1].setBounds(123 + this.x_change, 91 + newy, 60, 30);
+    this.count_triggers[2].setBounds(123 + this.x_change, 91 + newy * 2, 60, 30);
+    this.count_triggers[3].setBounds(123 + this.x_change, 91 + newy * 3, 60, 30);
+
+    this.HugeCard[0].setBounds(10, 10, 265, 375);
+
+    int x = 180;
+    int y = 0;
+    for (int i = 1; i < 17; i++)
+    {
+      this.Images_16[(i - 1)].setBounds(x + this.x_change, 35 + y, 68, 89);
+      this.Images_16[(i - 1)].addActionListener(this);
+      x += 69;
+      if (i % 4 == 0)
+      {
+        x = 180;
+        y += 90;
+      }
+    }
+
+    x = 315;
+    y = 0;
+
+    for (int i = 1; i < 50; i++)
+    {
+      this.Images_50[(i - 1)].setBounds(x, 35 + y, 68, 89);
+      this.Images_50[(i - 1)].addActionListener(this);
+      x += 69;
+      if (i % 7 == 0)
+      {
+        x = 315;
+        y += 90;
+      }
+    }
+
+    this.Images_50[49].setBounds(206, 35 + y - 90, 68, 89);
+
+    this.frame.setVisible(true);
+  }
+
+  private static BufferedImage resizeImage(BufferedImage originalImage, int type, Integer img_width, Integer img_height)//the resize function IMPORTANT
+  {
+    BufferedImage resizedImage = new BufferedImage(img_width.intValue(), img_height.intValue(), type);
+    Graphics2D g = resizedImage.createGraphics();
+    g.drawImage(originalImage, 0, 0, img_width.intValue(), img_height.intValue(), null);
+    g.dispose();
+
+    return resizedImage;
+  }
+
+  public static void main(String[] args)//Important Calls the main function
+  {
+    Cardfight game = new Cardfight();
+    game.Cardfight();//Look at top
+  }
+
+  public void actionPerformed(ActionEvent e)//ALl the actions perfomred by the buttons are here
+  {
+    Boolean shift = Boolean.valueOf(false);
+    if (KeyboardListener.isShiftDown())
+    {
+      shift = Boolean.valueOf(true);
+    }
+
+    if (e.getSource() == this.clear[0])
+    {
+      this.theDeck.clear();
+      this.cardNumber = 0;
+      this.heal = 0;
+      this.stand = 0;
+      this.critical = 0;
+      this.draw = 0;
+      this.trigger_amount = 0;
+      this.sentinal = 0;
+
+      for (int i = 0; i < 50; i++)
+      {
+        this.Images_50[i].setIcon(new ImageIcon(this.saved[0]));
+        this.Images_50[i].setPreferredSize(new Dimension(68, 89));
+      }
+
+      this.sort[0].setEnabled(false);
+      this.clear[0].setEnabled(false);
+    }
+
+    if (e.getSource() == this.sort[0])
+    {
+      final Collator collator = Collator.getInstance(Locale.US);
+
+      Collections.sort(this.theDeck, new Comparator()
+      {
+        public int compare(Cards c1, Cards c2)
+        {
+          return collator.compare(c1.Card_Name(), c2.Card_Name());
+        }
+      });
+      this.cardNumber = 0;
+
+      int j = 0;
+      for (Cards card : this.theDeck)
+      {
+        BufferedImage Image = card.getImage();
+        int type = Image.getType() == 0 ? 2 : Image.getType();
+
+        BufferedImage resizeImageJpg = resizeImage(Image, type, Integer.valueOf(68), Integer.valueOf(89));
+        ImageIcon Icon = new ImageIcon(resizeImageJpg);
+        this.Images_50[this.cardNumber].setIcon(Icon);
+        this.Images_50[j].setPreferredSize(new Dimension(68, 89));
+        j++;
+        this.cardNumber += 1;
+      }
+      while (j < 49)
+      {
+        this.Images_50[j].setIcon(new ImageIcon(this.saved[0]));
+        this.Images_50[j].setPreferredSize(new Dimension(68, 89));
+        j++;
+      }
+    }
+
+    Boolean PageChanged = Boolean.valueOf(false);
+
+    if (e.getSource() == this.next_prev[0])
+    {
+      this.pageNumber -= 1;
+      if (this.pageNumber > 1)
+      {
+        this.next_prev[1].setEnabled(true);
+        this.next_prev[0].setEnabled(true);
+      }
+      else
+      {
+        this.next_prev[1].setEnabled(true);
+        this.next_prev[0].setEnabled(false);
+      }
+
+      PageChanged = Boolean.valueOf(true);
+    }
+
+    if (e.getSource() == this.next_prev[1])
+    {
+      this.pageNumber += 1;
+      if (this.pageNumbers > this.pageNumber)
+      {
+        this.next_prev[1].setEnabled(true);
+        this.next_prev[0].setEnabled(true);
+      }
+      else
+      {
+        this.next_prev[0].setEnabled(true);
+        this.next_prev[1].setEnabled(false);
+      }
+      PageChanged = Boolean.valueOf(true);
+    }
+
+    if (PageChanged.booleanValue())
+    {
+      if (this.pageNumber == 1)
+      {
+        this.theCards16 = this.theCards.subList(0, 16);
+      }
+      else if (this.theCards.size() - 16 * this.pageNumber > 0)
+      {
+        this.theCards16 = this.theCards.subList(16 * (this.pageNumber - 1), this.pageNumber * 16);
+      }
+      else
+      {
+        this.theCards16 = this.theCards.subList(16 * (this.pageNumber - 1), this.theCards.size());
+      }
+
+      int i = 0;
+      for (Cards cards : this.theCards16)
+      {
+        if (cards.getImage() != null)
+        {
+          BufferedImage Image = cards.getImage();
+
+          int type = Image.getType() == 0 ? 2 : Image.getType();
+
+          BufferedImage resizeImageJpg = resizeImage(Image, type, Integer.valueOf(68), Integer.valueOf(89));
+          ImageIcon Icon = new ImageIcon(resizeImageJpg);
+          this.Images_16[i].setIcon(Icon);
+          this.Images_16[i].setPreferredSize(new Dimension(68, 89));
+        }
+        else
+        {
+          this.Images_16[i].setIcon(new ImageIcon(this.saved[0]));
+          this.Images_16[i].setPreferredSize(new Dimension(68, 89));
+        }
+        i++;
+      }
+      while (i < 16)
+      {
+        this.Images_16[i].setIcon(new ImageIcon(this.saved[0]));
+        this.Images_16[i].setPreferredSize(new Dimension(68, 89));
+        i++;
+      }
+
+    }
+
+    if (e.getSource() == this.buttons[1])//Clear button
+    {
+      for (int i = 0; i < 5; i++)
+      {
+        this.text[i].setText("");
+        this.checkbox[i].setSelected(true);
+      }
+      this.checkbox[4].setSelected(false);
+    }
+
+    for (int i = 0; i < 50; i++)
+    {
+      if (e.getSource() == this.Images_50[i])
+      {
+        if (this.theDeck != null)
+        {
+          Cards newCard = (Cards)this.theDeck.get(i);
+
+          if (newCard.getImage() != null)
+          {
+            BufferedImage Image = newCard.getImage();
+            int type = Image.getType() == 0 ? 2 : Image.getType();
+
+            BufferedImage resizeImageJpg = resizeImage(Image, type, Integer.valueOf(265), Integer.valueOf(375));
+            ImageIcon Icon = new ImageIcon(resizeImageJpg);
+            this.HugeCard[0].setIcon(Icon);
+            this.HugeCard[0].setPreferredSize(new Dimension(265, 375));
+
+            if (shift.booleanValue())
+            {
+              String trigger_type = newCard.Trigger();
+              int grade = newCard.Grade();
+              int shield = newCard.Shield();
+
+              if (trigger_type.equals("Heal"))
+              {
+                this.heal -= 1;
+                this.count_triggers[0].setText("<  " + this.heal + "  >");
+                this.trigger_amount -= 1;
+              }
+              else if (trigger_type.equals("Stand"))
+              {
+                this.stand -= 1;
+                this.count_triggers[1].setText("<  " + this.stand + "  >");
+                this.trigger_amount -= 1;
+              }
+              else if (trigger_type.equals("Critical"))
+              {
+                this.critical -= 1;
+                this.count_triggers[2].setText("<  " + this.critical + "  >");
+                this.trigger_amount -= 1;
+              }
+              else if (trigger_type.equals("Draw"))
+              {
+                this.draw -= 1;
+                this.count_triggers[3].setText("<  " + this.draw + "  >");
+                this.trigger_amount -= 1;
+              }
+
+              if ((grade == 1) && (shield == 0))
+              {
+                this.sentinal -= 1;
+              }
+
+              this.theDeck.remove(newCard);
+              this.cardNumber = 0;
+
+              int j = 0;
+              for (Cards card : this.theDeck)
+              {
+                Image = card.getImage();
+                type = Image.getType() == 0 ? 2 : Image.getType();
+
+                resizeImageJpg = resizeImage(Image, type, Integer.valueOf(68), Integer.valueOf(89));
+                Icon = new ImageIcon(resizeImageJpg);
+                this.Images_50[this.cardNumber].setIcon(Icon);
+                this.Images_50[j].setPreferredSize(new Dimension(68, 89));
+                j++;
+                this.cardNumber += 1;
+              }
+              while (j < 49)
+              {
+                this.Images_50[j].setIcon(new ImageIcon(this.saved[0]));
+                this.Images_50[j].setPreferredSize(new Dimension(68, 89));
+                j++;
+              }
+              if (this.cardNumber > 0)
+              {
+                this.sort[0].setEnabled(true);
+                this.clear[0].setEnabled(true);
+              }
+              else
+              {
+                this.sort[0].setEnabled(false);
+                this.clear[0].setEnabled(false);
+              }
+            }
+          }
+          else
+          {
+            this.HugeCard[0].setIcon(new ImageIcon(this.display[0]));
+            this.HugeCard[0].setPreferredSize(new Dimension(265, 375));
+          }
+        }
+      }
+
+    }
+
+    for (int i = 0; i < 16; i++)
+    {
+      if (e.getSource() == this.Images_16[i])
+      {
+        if (this.theCards16 != null)
+        {
+          Cards newCard = (Cards)this.theCards16.get(i);
+
+          if (newCard.getImage() != null)
+          {
+            BufferedImage Image = newCard.getImage();
+            int type = Image.getType() == 0 ? 2 : Image.getType();
+
+            BufferedImage resizeImageJpg = resizeImage(Image, type, Integer.valueOf(265), Integer.valueOf(375));
+            ImageIcon Icon = new ImageIcon(resizeImageJpg);
+            this.HugeCard[0].setIcon(Icon);
+            this.HugeCard[0].setPreferredSize(new Dimension(265, 375));
+
+            if (shift.booleanValue())
+            {
+              String trigger_type = newCard.Trigger();
+              int grade = newCard.Grade();
+              int shield = newCard.Shield();
+              Boolean add = Boolean.valueOf(false);
+
+              if (this.trigger_amount < 16)
+              {
+                if (trigger_type.equals("Heal"))
+                {
+                  if (this.heal < 4)
+                  {
+                    this.heal += 1;
+                    this.count_triggers[0].setText("<  " + this.heal + "  >");
+                    this.trigger_amount += 1;
+                    add = Boolean.valueOf(true);
+                  }
+                }
+                else if (trigger_type.equals("Stand"))
+                {
+                  this.stand += 1;
+                  this.count_triggers[1].setText("<  " + this.stand + "  >");
+                  this.trigger_amount += 1;
+                }
+                else if (trigger_type.equals("Critical"))
+                {
+                  this.critical += 1;
+                  this.count_triggers[2].setText("<  " + this.critical + "  >");
+                  this.trigger_amount += 1;
+                }
+                else if (trigger_type.equals("Draw"))
+                {
+                  this.draw += 1;
+                  this.count_triggers[3].setText("<  " + this.draw + "  >");
+                  this.trigger_amount += 1;
+                }
+
+                if (!trigger_type.equals("Heal")) {
+                  add = Boolean.valueOf(true);
+                }
+              }
+              Boolean sentinals = Boolean.valueOf(false);
+
+              if (((trigger_type.equals("None")) || (add.booleanValue())) && (this.cardNumber < 49))
+              {
+                if ((grade == 1) && (shield == 0))
+                {
+                  if (this.sentinal < 4)
+                  {
+                    this.sentinal += 1;
+                    sentinals = Boolean.valueOf(true);
+                  }
+                }
+                else
+                {
+                  sentinals = Boolean.valueOf(true);
+                }
+
+                if (sentinals.booleanValue())
+                {
+                  resizeImageJpg = resizeImage(Image, type, Integer.valueOf(68), Integer.valueOf(89));
+                  Icon = new ImageIcon(resizeImageJpg);
+                  this.Images_50[this.cardNumber].setIcon(Icon);
+                  this.Images_50[i].setPreferredSize(new Dimension(68, 89));
+                  this.theDeck.add(newCard);
+                  this.cardNumber += 1;
+                  this.sort[0].setEnabled(true);
+                  this.clear[0].setEnabled(true);
+                }
+              }
+            }
+          }
+          else
+          {
+            this.HugeCard[0].setIcon(new ImageIcon(this.display[0]));
+            this.HugeCard[0].setPreferredSize(new Dimension(265, 375));
+          }
+        }
+      }
+
+    }
+
+    if (e.getSource() == this.buttons[0])//The search button
+    {
+      String Cardname = this.text[0].getText().toLowerCase();
+      String Clan = this.text[2].getText().toLowerCase();
+      String Race = this.text[3].getText().toLowerCase();
+      String Grade = this.text[4].getText();
+      String CardSkill = this.text[1].getText().toLowerCase();
+
+      List setCards = new ArrayList();
+
+      Pattern card = null;
+      Pattern clan = null;
+      Pattern race = null;
+      Pattern grade1 = null;
+      Pattern cardskill = null;
+
+      Boolean card_exist = Boolean.valueOf(false);
+
+      Boolean None = Boolean.valueOf(this.checkbox[4].isSelected());
+      Boolean Heal = Boolean.valueOf(this.checkbox[0].isSelected());
+      Boolean Stand = Boolean.valueOf(this.checkbox[1].isSelected());
+      Boolean Critical = Boolean.valueOf(this.checkbox[2].isSelected());
+      Boolean Draw = Boolean.valueOf(this.checkbox[3].isSelected());
+
+      String none = "None";
+      String heal = "Heal";
+      String stand = "Stand";
+      String critical = "Critical";
+      String draw = "Draw";
+
+      for (Cards a : Sets)
+      {
+        Boolean card_found = Boolean.valueOf(false);
+        Boolean clan_found = Boolean.valueOf(false);
+        Boolean race_found = Boolean.valueOf(false);
+        Boolean grade_found = Boolean.valueOf(false);
+        Boolean skill_found = Boolean.valueOf(false);
+        Boolean trigger_found = Boolean.valueOf(false);
+
+        if (!Cardname.equals(""))
+        {
+          card = Pattern.compile(Cardname);
+          Matcher card1 = card.matcher("");
+          card1.reset(a.Card_Name().toLowerCase());
+          if (card1.find())
+          {
+            card_found = Boolean.valueOf(true);
+          }
+        }
+        else
+        {
+          card_found = Boolean.valueOf(true);
+        }
+
+        if (!Clan.equals(""))
+        {
+          clan = Pattern.compile(Clan);
+          Matcher clan1 = clan.matcher("");
+          clan1.reset(a.Clan().toLowerCase());
+          if (clan1.find())
+          {
+            clan_found = Boolean.valueOf(true);
+          }
+        }
+        else
+        {
+          clan_found = Boolean.valueOf(true);
+        }
+
+        if (!Race.equals(""))
+        {
+          race = Pattern.compile(Race);
+          Matcher race1 = race.matcher("");
+          race1.reset(a.Race().toLowerCase());
+          if (race1.find())
+          {
+            race_found = Boolean.valueOf(true);
+          }
+        }
+        else
+        {
+          race_found = Boolean.valueOf(true);
+        }
+
+        if (!Grade.equals(""))
+        {
+          grade1 = Pattern.compile(Grade);
+          Matcher grade2 = grade1.matcher("");
+          grade2.reset(Integer.toString(a.Grade()));
+          if (grade2.find())
+          {
+            grade_found = Boolean.valueOf(true);
+          }
+        }
+        else
+        {
+          grade_found = Boolean.valueOf(true);
+        }
+
+        if (!CardSkill.equals(""))
+        {
+          cardskill = Pattern.compile(CardSkill);
+          Matcher cardskill1 = cardskill.matcher("");
+          cardskill1.reset(a.CardSkill().toLowerCase());
+          if (cardskill1.find())
+          {
+            skill_found = Boolean.valueOf(true);
+          }
+        }
+        else
+        {
+          skill_found = Boolean.valueOf(true);
+        }
+
+        if ((None.booleanValue()) || (!None.booleanValue()))
+        {
+          if (none.equals(a.Trigger()))
+          {
+            trigger_found = Boolean.valueOf(true);
+          }
+        }
+
+        if ((Heal.booleanValue()) && (None.booleanValue()))
+        {
+          if (heal.equals(a.Trigger()))
+          {
+            trigger_found = Boolean.valueOf(true);
+          }
+        }
+
+        if ((Stand.booleanValue()) && (None.booleanValue()))
+        {
+          if (stand.equals(a.Trigger()))
+          {
+            trigger_found = Boolean.valueOf(true);
+          }
+        }
+
+        if ((Critical.booleanValue()) && (None.booleanValue()))
+        {
+          if (critical.equals(a.Trigger()))
+          {
+            trigger_found = Boolean.valueOf(true);
+          }
+        }
+
+        if ((Draw.booleanValue()) && (None.booleanValue()))
+        {
+          if (draw.equals(a.Trigger()))
+          {
+            trigger_found = Boolean.valueOf(true);
+          }
+        }
+
+        if ((card_found.booleanValue()) && (clan_found.booleanValue()) && (race_found.booleanValue()) && (grade_found.booleanValue()) && (skill_found.booleanValue()) && (trigger_found.booleanValue()))
+        {
+          setCards.add(a);
+
+          card_exist = Boolean.valueOf(true);
+        }
+      }
+
+      if (card_exist.booleanValue())
+      {
+        this.pageNumber = 1;
+        this.next_prev[0].setEnabled(false);
+        this.theCards = setCards;
+      }
+      else
+      {
+        this.theCards = null;
+      }
+
+      if (this.theCards != null)
+      {
+        this.pageNumbers = ((int)Math.ceil(this.theCards.size() / 16.0F));
+
+        if (this.pageNumbers > 1)
+        {
+          this.next_prev[1].setEnabled(true);
+          this.theCards16 = this.theCards.subList(0, 16);
+        }
+        else
+        {
+          this.next_prev[1].setEnabled(false);
+          this.theCards16 = this.theCards.subList(0, this.theCards.size());
+        }
+
+        int i = 0;
+        for (Cards cards : this.theCards16)
+        {
+          if (cards.getImage() != null)
+          {
+            BufferedImage Image = cards.getImage();
+            int type = Image.getType() == 0 ? 2 : Image.getType();
+
+            BufferedImage resizeImageJpg = resizeImage(Image, type, Integer.valueOf(68), Integer.valueOf(89));
+            ImageIcon Icon = new ImageIcon(resizeImageJpg);
+
+            this.Images_16[i].setIcon(Icon);
+            this.Images_16[i].setPreferredSize(new Dimension(68, 89));
+          }
+          else
+          {
+            this.Images_16[i].setIcon(new ImageIcon(this.saved[0]));
+            this.Images_16[i].setPreferredSize(new Dimension(68, 89));
+          }
+          i++;
+        }
+        while (i < 16)
+        {
+          this.Images_16[i].setIcon(new ImageIcon(this.saved[0]));
+          this.Images_16[i].setPreferredSize(new Dimension(68, 89));
+          i++;
+        }
+      }
+    }
+  }
+}
